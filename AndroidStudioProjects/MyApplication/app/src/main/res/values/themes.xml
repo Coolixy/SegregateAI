@@ -1,0 +1,21 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base app theme -->
+    <style name="Theme.AppTry" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your app theme here -->
+        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorSecondary">@color/teal_200</item>
+    </style>
+
+    <!-- Splash screen theme -->
+    <style name="Theme.AppTry.Splash" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Background shown on all Android versions -->
+        <item name="android:windowBackground">@color/white</item>
+
+        <!-- Android 12+ splash screen attributes -->
+        <item name="android:windowSplashScreenAnimatedIcon">@mipmap/ic_launcher</item>
+        <item name="android:windowSplashScreenBackground">@color/white</item>
+        <item name="postSplashScreenTheme">@style/Theme.AppTry</item>
+    </style>
+
+</resources>

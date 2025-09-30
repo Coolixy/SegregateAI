@@ -1,0 +1,3 @@
+0,biodegradable
+1,non-biodegradable
+2,others
