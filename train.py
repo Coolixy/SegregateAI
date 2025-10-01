@@ -62,12 +62,22 @@ class_weights = compute_class_weight(class_weight='balanced', classes=np.unique(
 class_weights = torch.tensor(class_weights, dtype=torch.float)
 
 # 6. Prepare model
-model = AutoModelForSequenceClassification.from_pretrained(
-    model_name,
-    num_labels=num_labels,
-    id2label=id2label,
-    label2id=label2id
-)
+model = models.Sequential([
+    layers.Conv2D(32, (3,3), activation='relu', input_shape=(150, 150, 3)),
+    layers.MaxPooling2D(2,2),
+
+    layers.Conv2D(64, (3,3), activation='relu'),
+    layers.MaxPooling2D(2,2),
+
+    layers.Conv2D(128, (3,3), activation='relu'),
+    layers.MaxPooling2D(2,2),
+
+    layers.Flatten(),
+    layers.Dense(128, activation='relu'),
+    layers.Dropout(0.5),
+    layers.Dense(3, activation='softmax')  # 3 classes
+])
+
 
 # 7. Define Trainer with weighted loss to handle class imbalance
 class WeightedTrainer(Trainer):
